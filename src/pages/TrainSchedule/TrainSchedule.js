@@ -6,7 +6,7 @@ import { Container, Row, Spinner } from 'react-bootstrap';
 class TrainSchedule extends Component {
 
     state = {
-
+        trains: []
     }
 
     componentDidMount() {
@@ -18,7 +18,10 @@ class TrainSchedule extends Component {
         console.log(url);
         axios.get(url)
             .then(resp => {
-            console.log(resp.data);
+                console.log(resp.data);
+                this.setState({
+                    trains: resp.data
+                });
             })
             .catch(err => console.log(err));
     }
