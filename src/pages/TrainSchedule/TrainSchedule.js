@@ -32,7 +32,7 @@ class TrainSchedule extends Component {
 
     getCurrentTrains() {
 
-        const url = `/api/train`;
+        const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
         console.log(url);
         axios.get(url)
             .then(resp => {
