@@ -17,7 +17,7 @@ class TrainSchedule extends Component {
         event.preventDefault();
         console.log('postCurrentTrains');
         console.log(train);
-        const url = `/api/train`;
+        const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
         console.log(url);
         axios.post(url, {
             train
