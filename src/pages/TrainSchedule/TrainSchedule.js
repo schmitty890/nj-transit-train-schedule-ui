@@ -3,13 +3,8 @@ import Hero from '../../components/Hero/Hero';
 import axios from "axios";
 import { Container, Row, Spinner } from 'react-bootstrap';
 
-console.log(process.env.NODE_ENV);
-let baseURL = ''
-if(process.env.NODE_ENV === 'development') {
-    baseURL = 'http://localhost:3001';
-} else if(process.env.NODE_ENV === 'production') {
-    baseURL = 'https://nj-transit-train-schedule-api.herokuapp.com';
-}
+// define base url for http requests
+let baseURL = (window.location.hostname === 'localhost') ? 'http://localhost:3001' : 'https://nj-transit-train-schedule-api.herokuapp.com';
 
 console.log(baseURL);
 
@@ -25,8 +20,6 @@ class TrainSchedule extends Component {
 
     postCurrentTrains(event, train) {
         event.preventDefault();
-        console.log('setupProxy.js');
-        console.log(process.env.NODE_ENV);
         console.log('postCurrentTrains');
         console.log(train);
         // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
