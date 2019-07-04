@@ -13,8 +13,26 @@ class TrainSchedule extends Component {
         this.getCurrentTrains();
     }
 
+    postCurrentTrains(event, train) {
+        event.preventDefault();
+        console.log('postCurrentTrains');
+        console.log(train);
+        const url = `/api/train`;
+        console.log(url);
+        axios.post(url, {
+            train
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });      
+    }
+
     getCurrentTrains() {
-        const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
+
+        const url = `/api/train`;
         console.log(url);
         axios.get(url)
             .then(resp => {
@@ -29,7 +47,8 @@ class TrainSchedule extends Component {
     render() {
         return (
             <Container>
-                <Hero />
+                <Hero 
+                    action={this.postCurrentTrains} />
             </Container>
         );
     }
