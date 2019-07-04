@@ -6,7 +6,7 @@ const Hero = () => {
     return (
         <Container>
         <Row>
-            <Col sm={12}>
+            <Col sm={12} className={styles.hero}>
                 <div>Train Schedule</div>
             </Col>
         </Row>
