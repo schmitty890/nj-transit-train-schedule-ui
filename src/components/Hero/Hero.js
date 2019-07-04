@@ -6,13 +6,14 @@ const Hero = () => {
     return (
         <Container>
         <Row>
-            <Col sm={8}>sm=8</Col>
-            <Col sm={4}>sm=4</Col>
+            <Col sm={12}>
+                <div>Train Schedule</div>
+            </Col>
         </Row>
         <Row>
-            <Col sm>sm=true</Col>
-            <Col sm>sm=true</Col>
-            <Col sm>sm=true</Col>
+            <Col sm>Train 1</Col>
+            <Col sm>Train 2</Col>
+            <Col sm>Train 3</Col>
         </Row>
         </Container>
     )
