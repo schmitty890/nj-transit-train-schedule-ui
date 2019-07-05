@@ -9,12 +9,14 @@ const ListItem = (props) => {
         <Card>
             <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey={props.keyid}>
-                {props.departure}
-                {props.destination}
-                {props.track}
-                {props.line}
-                {props.status}
-                {props.trainNumber}
+                <section className={styles.trainWrapper}>
+                    <div>departure: {props.departure}</div>
+                    <div>destination: {props.destination}</div>
+                    <div>track #: {props.track}</div>
+                    <div>line: {props.line}</div>
+                    <div>status: {props.status}</div>
+                    <div>train #: {props.trainNumber}</div>
+                </section>
             </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey={props.keyid}>
