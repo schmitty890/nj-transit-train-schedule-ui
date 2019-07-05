@@ -59,6 +59,7 @@ class TrainSchedule extends Component {
         trainList = this.state.trains.map((train, index) => {
             console.log(train);
             return <ListItem
+                key={index}
                 keyid={index}
                 departure={train.departure}
                 trainNumber={train.trainNumber}
