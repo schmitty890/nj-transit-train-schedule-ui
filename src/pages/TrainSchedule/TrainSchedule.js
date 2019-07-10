@@ -38,6 +38,25 @@ class TrainSchedule extends Component {
           });
     }
 
+    postTrainStopDetails(event, train) {
+        event.preventDefault();
+        console.log('getTrainStopDetails');
+        console.log(train);
+        // const url = `https://dv.njtransit.com/webdisplay/train_stops.aspx?train=${train.trainNumber}`;
+
+        const url = `${baseURL}/api/train-details`;
+        // console.log(url);
+        axios.post(url, {
+            train
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+
     getCurrentTrains() {
         // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
         const url = `${baseURL}/api/train`;
@@ -70,7 +89,8 @@ class TrainSchedule extends Component {
                 destination={train.destination}
                 track={train.track}
                 line={train.line}
-                status={train.status} />
+                status={train.status}
+                action={this.postTrainStopDetails} />
         });
 
         return (

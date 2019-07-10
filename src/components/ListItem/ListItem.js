@@ -40,7 +40,7 @@ const ListItem = (props) => {
         destination = props.destination;
     }
     return (            
-        <Card>
+        <Card onClick={(event) => props.action(event, props)}>
             <Card.Header className={lineBorderStyle}>
             <Accordion.Toggle as={Button} variant="link" className={styles.fullWidth} eventKey={props.keyid}>
                 <Container>
