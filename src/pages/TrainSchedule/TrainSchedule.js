@@ -58,6 +58,10 @@ class TrainSchedule extends Component {
 
         trainList = this.state.trains.map((train, index) => {
             console.log(train);
+            // console.log(train.destination);
+            if(train.destination === '') { // if destination is blank, don't render the list item of that train
+                return;
+            }
             return <ListItem
                 key={index}
                 keyid={index}
