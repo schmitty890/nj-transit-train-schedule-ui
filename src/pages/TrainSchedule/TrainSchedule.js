@@ -31,14 +31,14 @@ class TrainSchedule extends Component {
           })
           .then(function (response) {
             console.log(response);
+            window.location.reload();
           })
           .catch(function (error) {
             console.log(error);
-          });      
+          });
     }
 
     getCurrentTrains() {
-
         // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
         const url = `${baseURL}/api/train`;
         console.log(url);
