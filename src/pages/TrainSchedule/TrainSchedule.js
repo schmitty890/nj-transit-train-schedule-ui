@@ -7,7 +7,7 @@ import { Container, Row, Spinner, Accordion } from 'react-bootstrap';
 // define base url for http requests
 let baseURL = (window.location.hostname === 'localhost') ? 'http://localhost:3001' : 'https://nj-transit-train-schedule-api.herokuapp.com';
 
-console.log(baseURL);
+// console.log(baseURL);
 
 class TrainSchedule extends Component {
 
@@ -15,6 +15,18 @@ class TrainSchedule extends Component {
         currentStation: '',
         currentStationZip: '',
         forecastWeather: [],
+        currentWeather: [
+            { name: "" },
+            { temp: "" },
+            { description: "" },
+            { windSpeed: "" },
+            { humidity: "" },
+            { pressure: "" },
+            { cloudiness: "" },
+            { sunrise: "" },
+            { sunset: "" },
+            { icon: "" }
+        ],
         trains: []
     }
 
@@ -25,26 +37,26 @@ class TrainSchedule extends Component {
 
     postCurrentTrains(event, train) {
         event.preventDefault();
-        console.log('postCurrentTrains');
-        console.log(train);
+        // console.log('postCurrentTrains');
+        // console.log(train);
 
         let url = `${baseURL}/api/train-current-station`;
         const station = train;
         axios.post(url, {
             station
         }).then(function(response) {
-            console.log(response);
+            // console.log(response);
         }).catch(function(error) {
             console.log(error);
         })
         // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
         url = `${baseURL}/api/train`;
-        console.log(url);
+        // console.log(url);
         axios.post(url, {
             train
           })
           .then(function (response) {
-            console.log(response);
+            // console.log(response);
             // window.location.reload();
           })
           .catch(function (error) {
@@ -54,8 +66,8 @@ class TrainSchedule extends Component {
 
     postTrainStopDetails(event, train) {
         event.preventDefault();
-        console.log('getTrainStopDetails');
-        console.log(train);
+        // console.log('getTrainStopDetails');
+        // console.log(train);
         // const url = `https://dv.njtransit.com/webdisplay/train_stops.aspx?train=${train.trainNumber}`;
 
         const url = `${baseURL}/api/train-details`;
@@ -74,10 +86,10 @@ class TrainSchedule extends Component {
     getCurrentTrains() {
         // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
         const url = `${baseURL}/api/train`;
-        console.log(url);
+        // console.log(url);
         axios.get(url)
             .then(resp => {
-                console.log(resp.data);
+                // console.log(resp.data);
                 this.setState({
                     trains: resp.data
                 });
@@ -88,7 +100,7 @@ class TrainSchedule extends Component {
     getCurrentStation() {
         // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
         const url = `${baseURL}/api/train-current-station`;
-        console.log(url);
+        // console.log(url);
         axios.get(url)
             .then(resp => {
                 console.log(resp.data[0]);
@@ -97,22 +109,49 @@ class TrainSchedule extends Component {
                     currentStationZip: resp.data[0].zip
                 });
                 this.getForecastWeather(this.state.currentStationZip);
+                this.getCurrentWeather(this.state.currentStationZip);
             })
             .catch(err => console.log(err));
     }
 
     getForecastWeather(zip) {
-        console.log(zip);
+        // console.log(zip);
         const url = `${baseURL}/api/weather-forecast/${zip}`;
         // this.setState({ loading: true });
         // // console.log(url);
         axios.get(url)
             .then(resp => {
-            console.log(resp.data);
+            // console.log(resp.data);
                 //set state for forecast
                 this.setState({ 
                     forecastWeather: [...resp.data.list]
                 })
+            })
+            .catch(err => this.setState( { error: 'We have an error :(' } ));
+    }
+
+    getCurrentWeather(zip) {
+        // console.log('zip');
+        const url = `${baseURL}/api/weather-current/${zip}`;
+        // console.log(url);
+        axios.get(url)
+            .then(resp => {
+            console.log(resp.data);
+            this.setState({ 
+                currentWeather: [
+                    { name: resp.data.name },
+                    { temp: resp.data.main.temp },
+                    { description: resp.data.weather[0].description },
+                    { windSpeed: resp.data.wind.speed },
+                    { humidity: resp.data.main.humidity },
+                    { pressure: resp.data.main.pressure },
+                    { cloudiness: resp.data.clouds.all },
+                    { sunrise: resp.data.sys.sunrise },
+                    { sunset: resp.data.sys.sunset },
+                    { icon: resp.data.weather[0].icon }
+                ],
+                error: ""
+            });
             })
             .catch(err => this.setState( { error: 'We have an error :(' } ));
     }
@@ -143,7 +182,8 @@ class TrainSchedule extends Component {
             <Container>
                 <Hero 
                     action={this.postCurrentTrains}
-                    currentStation={this.state.currentStation} />
+                    currentStation={this.state.currentStation}
+                    currentWeather={this.state.currentWeather} />
                 <Accordion>
                     {trainList}
                 </Accordion>
