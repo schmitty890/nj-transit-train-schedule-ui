@@ -7,16 +7,17 @@ const CurrentWeather = (props) => {
     console.log(props);
     const icon = weatherIconAPI.getIcon(props.currentWeather[9].icon);
     return (
-        <Container>
+        <Container className={styles.weatherContainer}>
             <Row>
-                <Col sm={8}>from current weather for {props.currentWeather[0].name} is {props.currentWeather[1].temp}</Col>
-                <Col sm={4}>description: {props.currentWeather[2].description}</Col>
+                <Col sm className={styles.paddingTop10}>the current temperature for {props.currentWeather[0].name} is {props.currentWeather[1].temp}</Col>
+                <Col sm className={styles.paddingTop10}>{props.currentWeather[2].description}</Col>
+                <Col sm className={styles.icon}>{icon}</Col>
             </Row>
-            <Row>
+            {/* <Row>
                 <Col sm>wind speed: {props.currentWeather[3].windSpeed}</Col>
                 <Col sm>humidity: {props.currentWeather[4].humidity}</Col>
                 <Col sm>icon: {icon}</Col>
-            </Row>
+            </Row> */}
         </Container>
     )
 }
