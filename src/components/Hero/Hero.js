@@ -7,16 +7,15 @@ const Hero = (props) => {
     console.log(props);
     return (
         <Container>
+            <CurrentWeather
+                currentWeather={props.currentWeather} />
             <Row>
                 <Col sm={12} className={styles.hero}>
-                    <div>Train Schedule for {props.currentStation}</div>
+                    <div className={styles.heroTitle}>Current Train Schedule: {props.currentStation}</div>
                     <Button variant="success" onClick={(event) => props.action(event, 'hamilton')}>Hamilton</Button>
                     <Button variant="success" onClick={(event) => props.action(event, 'nyp')}>New York Penn</Button>
                 </Col>
             </Row>
-
-            <CurrentWeather
-                currentWeather={props.currentWeather} />
         </Container>
     )
 }
