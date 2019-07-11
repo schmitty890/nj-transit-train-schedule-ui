@@ -12,26 +12,40 @@ console.log(baseURL);
 class TrainSchedule extends Component {
 
     state = {
+        currentStation: '',
+        currentStationZip: '',
+        weather: [],
         trains: []
     }
 
     componentDidMount() {
         this.getCurrentTrains();
+        this.getCurrentStation();
     }
 
     postCurrentTrains(event, train) {
         event.preventDefault();
         console.log('postCurrentTrains');
         console.log(train);
+
+        let url = `${baseURL}/api/train-current-station`;
+        const station = train;
+        axios.post(url, {
+            station
+        }).then(function(response) {
+            console.log(response);
+        }).catch(function(error) {
+            console.log(error);
+        })
         // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
-        const url = `${baseURL}/api/train`;
+        url = `${baseURL}/api/train`;
         console.log(url);
         axios.post(url, {
             train
           })
           .then(function (response) {
             console.log(response);
-            window.location.reload();
+            // window.location.reload();
           })
           .catch(function (error) {
             console.log(error);
@@ -71,12 +85,27 @@ class TrainSchedule extends Component {
             .catch(err => console.log(err));
     }
 
+    getCurrentStation() {
+        // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
+        const url = `${baseURL}/api/train-current-station`;
+        console.log(url);
+        axios.get(url)
+            .then(resp => {
+                console.log(resp.data[0]);
+                this.setState({
+                    currentStation: resp.data[0].station,
+                    currentStationZip: resp.data[0].zip
+                });
+            })
+            .catch(err => console.log(err));
+    }
+
     render() {
 
         let trainList = null;
 
         trainList = this.state.trains.map((train, index) => {
-            console.log(train);
+            // console.log(train);
             // console.log(train.destination);
             if(train.destination === '') { // if destination is blank, don't render the list item of that train
                 return;
@@ -96,7 +125,8 @@ class TrainSchedule extends Component {
         return (
             <Container>
                 <Hero 
-                    action={this.postCurrentTrains} />
+                    action={this.postCurrentTrains}
+                    currentStation={this.state.currentStation} />
                 <Accordion>
                     {trainList}
                 </Accordion>

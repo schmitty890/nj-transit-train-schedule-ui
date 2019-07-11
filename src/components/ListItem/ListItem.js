@@ -5,13 +5,13 @@ import FaTrain from 'react-icons/lib/fa/train';
 import FaClockO from 'react-icons/lib/fa/clock-o';
 
 const ListItem = (props) => {
-    console.log('the props');
-    console.log(props.status);
+    // console.log('the props');
+    // console.log(props.status);
     let status = '';
     let destination = '';
     let lineBorderStyle = '';
     if(props.status === '') {
-        console.log('status is empty');
+        // console.log('status is empty');
         status = 'n/a';
     } else {
         status = props.status;
@@ -34,7 +34,7 @@ const ListItem = (props) => {
 
 
     if(props.destination === '') {
-        console.log('destination is empty');
+        // console.log('destination is empty');
         destination = 'n/a';
     } else {
         destination = props.destination;
