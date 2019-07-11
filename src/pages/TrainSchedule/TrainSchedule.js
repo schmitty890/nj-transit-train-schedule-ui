@@ -14,7 +14,7 @@ class TrainSchedule extends Component {
     state = {
         currentStation: '',
         currentStationZip: '',
-        weather: [],
+        forecastWeather: [],
         trains: []
     }
 
@@ -96,8 +96,25 @@ class TrainSchedule extends Component {
                     currentStation: resp.data[0].station,
                     currentStationZip: resp.data[0].zip
                 });
+                this.getForecastWeather(this.state.currentStationZip);
             })
             .catch(err => console.log(err));
+    }
+
+    getForecastWeather(zip) {
+        console.log(zip);
+        const url = `${baseURL}/api/weather-forecast/${zip}`;
+        // this.setState({ loading: true });
+        // // console.log(url);
+        axios.get(url)
+            .then(resp => {
+            console.log(resp.data);
+                //set state for forecast
+                this.setState({ 
+                    forecastWeather: [...resp.data.list]
+                })
+            })
+            .catch(err => this.setState( { error: 'We have an error :(' } ));
     }
 
     render() {
