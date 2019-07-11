@@ -71,7 +71,8 @@ class TrainSchedule extends Component {
         // const url = `https://dv.njtransit.com/webdisplay/train_stops.aspx?train=${train.trainNumber}`;
 
         const url = `${baseURL}/api/train-details`;
-        // console.log(url);
+        console.log(url);
+
         axios.post(url, {
             train
           })
