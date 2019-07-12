@@ -11,6 +11,17 @@
     width: 100%;
 }
 
+.center {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+}
+
 .lineBorderStyleNorthEastCorridor {
     border: 5px solid #ee3a41;
 }

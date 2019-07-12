@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Container, Button, Accordion, Card } from 'react-bootstrap';
+import { Row, Col, Container, Button, Accordion, Card, Spinner } from 'react-bootstrap';
 import styles from "./ListItem.module.css";
 import ListItemDetails from '../ListItemDetails/ListItemDetails';
 import FaTrain from 'react-icons/lib/fa/train';
@@ -47,19 +47,21 @@ class ListItem extends Component {
 
         let trainStopList = null;
 
+
         // // console.log(props.trainStopDetails);
         trainStopList = this.props.trainStopDetails.map((train, index) => {
-            console.log('hi');
-            console.log(index + ' ' + train);
-        //     // console.log(train.destination);
-        //     // if(train.destination === '') { // if destination is blank, don't render the list item of that train
-        //     //     return;
-        //     // }
-        //     console.log('yee');
             return <ListItemDetails
                 eventKey={index}
                 trainStopDetails={train} />
         });
+
+        // console.log(this.props.loadingTrainStopDetails);
+        if(this.props.loadingTrainStopDetails) {
+            // console.log('THE LOADING STATE IS TRUE IN LIST ITEM!');
+            trainStopList = <Spinner className={styles.center} animation="border" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </Spinner>;
+        }
 
         return (            
             <Card onClick={(event) => this.props.action(event, this.props)}>
