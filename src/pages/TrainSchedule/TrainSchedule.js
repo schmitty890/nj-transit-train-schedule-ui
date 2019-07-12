@@ -27,7 +27,8 @@ class TrainSchedule extends Component {
             { sunset: "" },
             { icon: "" }
         ],
-        trains: []
+        trains: [],
+        trainStopDetails: []
     }
 
     componentDidMount() {
@@ -64,7 +65,7 @@ class TrainSchedule extends Component {
           });
     }
 
-    postTrainStopDetails(event, train) {
+    postTrainStopDetails = (event, train) => {
         event.preventDefault();
         // console.log('getTrainStopDetails');
         // console.log(train);
@@ -76,13 +77,31 @@ class TrainSchedule extends Component {
         axios.post(url, {
             train
           })
-          .then(function (response) {
-            console.log(response);
+          .then(response => {
+            console.log(response.data.trainDetails);
+            this.setState({
+                trainStopDetails: response.data.trainDetails
+            });
           })
-          .catch(function (error) {
+          .catch(error => {
             console.log(error);
           });
     }
+
+    // getTrainStopDetails() {
+    //     console.log('getTrainStopDetails');
+
+    //     // const url = `${baseURL}/api/train-details`;
+    //     // // console.log(url);
+    //     // axios.get(url)
+    //     //     .then(resp => {
+    //     //         console.log(resp.data);
+    //     //         // this.setState({
+    //     //         //     trainStopDetails: resp.data
+    //     //         // });
+    //     //     })
+    //     //     .catch(err => console.log(err));
+    // }
 
     getCurrentTrains() {
         // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
@@ -176,8 +195,10 @@ class TrainSchedule extends Component {
                 track={train.track}
                 line={train.line}
                 status={train.status}
-                action={this.postTrainStopDetails} />
+                action={this.postTrainStopDetails}
+                trainStopDetails={this.state.trainStopDetails} />
         });
+
 
         return (
             <Container>
