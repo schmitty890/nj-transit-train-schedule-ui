@@ -74,7 +74,7 @@ class TrainSchedule extends Component {
         // const url = `https://dv.njtransit.com/webdisplay/train_stops.aspx?train=${train.trainNumber}`;
 
         const url = `${baseURL}/api/train-details`;
-        console.log(url);
+        // console.log(url);
 
         axios.post(url, {
             train
@@ -91,23 +91,7 @@ class TrainSchedule extends Component {
           });
     }
 
-    // getTrainStopDetails() {
-    //     console.log('getTrainStopDetails');
-
-    //     // const url = `${baseURL}/api/train-details`;
-    //     // // console.log(url);
-    //     // axios.get(url)
-    //     //     .then(resp => {
-    //     //         console.log(resp.data);
-    //     //         // this.setState({
-    //     //         //     trainStopDetails: resp.data
-    //     //         // });
-    //     //     })
-    //     //     .catch(err => console.log(err));
-    // }
-
     getCurrentTrains() {
-        // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
         const url = `${baseURL}/api/train`;
         // console.log(url);
         axios.get(url)
@@ -121,12 +105,11 @@ class TrainSchedule extends Component {
     }
 
     getCurrentStation() {
-        // const url = `https://nj-transit-train-schedule-api.herokuapp.com/api/train`;
         const url = `${baseURL}/api/train-current-station`;
         // console.log(url);
         axios.get(url)
             .then(resp => {
-                console.log(resp.data[0]);
+                // console.log(resp.data[0]);
                 this.setState({
                     currentStation: resp.data[0].station,
                     currentStationZip: resp.data[0].zip
@@ -159,7 +142,7 @@ class TrainSchedule extends Component {
         // console.log(url);
         axios.get(url)
             .then(resp => {
-            console.log(resp.data);
+            // console.log(resp.data);
             this.setState({ 
                 currentWeather: [
                     { name: resp.data.name },

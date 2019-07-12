@@ -4,7 +4,7 @@ import styles from "./CurrentWeather.module.css";
 import weatherIconAPI from "../../utils/weatherIcons/weatherIcons";
 
 const CurrentWeather = (props) => {
-    console.log(props);
+    // console.log(props);
     const icon = weatherIconAPI.getIcon(props.currentWeather[9].icon);
     return (
         <Container className={styles.weatherContainer}>

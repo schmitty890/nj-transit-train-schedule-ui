@@ -4,7 +4,7 @@ import styles from "./Hero.module.css";
 import CurrentWeather from '../CurrentWeather/CurrentWeather';
 
 const Hero = (props) => {
-    console.log(props);
+    // console.log(props);
     return (
         <Container>
             <CurrentWeather

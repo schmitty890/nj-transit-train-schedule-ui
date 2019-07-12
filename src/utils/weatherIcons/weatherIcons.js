@@ -2,7 +2,7 @@ import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from
 
 export default {
     getIcon: function(icon) {
-        console.log(icon);
+        // console.log(icon);
         switch(icon) {
             case '01d': // clear day
                 return ReactHtmlParser('<i class="wi wi-day-sunny"></i>');
