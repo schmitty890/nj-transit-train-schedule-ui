@@ -6,6 +6,10 @@
     text-align: center;
 }
 
+.heroImage {
+    height: 100px;
+}
+
 @media(max-width: 768px) {
     .heroImage {
         display: block;

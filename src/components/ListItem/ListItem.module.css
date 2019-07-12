@@ -23,41 +23,41 @@
 }
 
 .lineBorderStyleNorthEastCorridor {
-    border: 5px solid #ee3a41;
+    border-left: 5px solid #ee3a41;
 }
 
 .lineBorderStyleNorthJerseyCoast {
-    border: 5px solid #00a5e3;
+    border-left: 5px solid #00a5e3;
 }
 
 .lineBorderStyleRaritanValley {
-    border: 5px solid #faa633;
+    border-left: 5px solid #faa633;
 }
 
 .lineBorderStyleGladstoneBranch {
-    border: 5px solid #a1d4ae;
+    border-left: 5px solid #a1d4ae;
 }
 
 .lineBorderStyleMorristown {
-    border: 5px solid #00a94e;
+    border-left: 5px solid #00a94e;
 }
 
 .lineBorderStyleMontclairBoonton {
-    border: 5px solid #e76a5b;
+    border-left: 5px solid #e76a5b;
 }
 
 .lineBorderStyleMain {
-    border: 5px solid #fece08;
+    border-left: 5px solid #fece08;
 }
 
 .lineBorderBergenCounty {
-    border: 5px solid #b9c9df;
+    border-left: 5px solid #b9c9df;
 }
 
 .lineBorderPascackValley {
-    border: 5px solid #a0218c;
+    border-left: 5px solid #a0218c;
 }
 
 .lineBorderAtlanticCity {
-    border: 5px solid #015dab;
+    border-left: 5px solid #015dab;
 }
