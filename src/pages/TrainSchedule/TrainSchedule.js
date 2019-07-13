@@ -37,7 +37,7 @@ class TrainSchedule extends Component {
         this.getCurrentStation();
     }
 
-    postCurrentTrains(event, train) {
+    postCurrentTrains = (event, train) => {
         event.preventDefault();
         // console.log('postCurrentTrains');
         // console.log(train);
@@ -57,11 +57,15 @@ class TrainSchedule extends Component {
         axios.post(url, {
             train
           })
-          .then(function (response) {
-            // console.log(response);
+          .then(response => {
+            console.log(response);
+            this.setState({
+                trains: response.data.trains
+            });
+            this.getCurrentStation();
             // window.location.reload();
           })
-          .catch(function (error) {
+          .catch(error => {
             console.log(error);
           });
     }

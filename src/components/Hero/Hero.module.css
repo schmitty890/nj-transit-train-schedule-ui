@@ -4,7 +4,7 @@
 
 .heroTitle {
     text-align: center;
-    display: inline;
+    /* display: inline; */
     float: right;
     font-size: 72px;
     opacity: .1;
@@ -12,6 +12,8 @@
 
 .heroImage {
     height: 100px;
+    display: block;
+    margin: 0 auto;
 }
 
 @media(max-width: 768px) {
@@ -19,5 +21,20 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .dropdown {
+        width: 100%;
+        color: red;
+        border: 2px solid red;
+    }
+
+    .dropdown a {
+        border-bottom: 1px solid green;
+        padding: 20px;
     }
 }

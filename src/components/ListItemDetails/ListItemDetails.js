@@ -8,7 +8,7 @@ const ListItemDetails = (props) => {
     // console.log(props);
 
     return (            
-        <div key={props.eventKey}>{props.trainStopDetails}</div>
+        <div keyid={props.keyid}>{props.trainStopDetails}</div>
     )
 }
 

@@ -51,7 +51,8 @@ class ListItem extends Component {
         // // console.log(props.trainStopDetails);
         trainStopList = this.props.trainStopDetails.map((train, index) => {
             return <ListItemDetails
-                eventKey={index}
+                key={index}
+                keyid={index}
                 trainStopDetails={train} />
         });
 
