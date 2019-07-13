@@ -5,7 +5,7 @@ import CurrentWeather from '../CurrentWeather/CurrentWeather';
 import logo from '../../images/logo.png';
 
 const Hero = (props) => {
-    // console.log(props);
+    console.log(props);
     return (
         <Container>
             <Row>
@@ -14,15 +14,11 @@ const Hero = (props) => {
                     {/* <div className={styles.heroTitle}>{props.currentStation}</div> */}
                 </Col>
                 <Col sm={4} className={styles.hero}>
-                    {/* <div className={styles.heroTitle}>{props.currentStation}</div> */}
-                    <div>Current station selected: Hamilton</div>
-                    {/* <div className={styles.heroTitle}>{props.currentStation}</div> */}
-                    <div>Current temp: 70</div>
+                    <div className={styles.currentStation}>Current station: {props.currentStation}</div>
                 </Col>
                 <Col sm={4} className={styles.hero}>
                     <CurrentWeather
                         currentWeather={props.currentWeather} />
-                    {/* <div className={styles.heroTitle}>{props.currentStation}</div> */}
                 </Col>
             </Row>
             <Row>
