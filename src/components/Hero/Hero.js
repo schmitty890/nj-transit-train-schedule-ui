@@ -13,7 +13,7 @@ const Hero = (props) => {
             <Row>
                 <Col sm={12} className={styles.hero}>
                     <img className={styles.heroImage} src={logo} />
-                    <div className={styles.heroTitle}>Current Train Schedule: {props.currentStation}</div>
+                    <div className={styles.heroTitle}>{props.currentStation}</div>
                     <Dropdown>
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
                             Choose a station

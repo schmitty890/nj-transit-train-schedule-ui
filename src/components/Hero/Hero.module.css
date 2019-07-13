@@ -4,6 +4,10 @@
 
 .heroTitle {
     text-align: center;
+    display: inline;
+    float: right;
+    font-size: 72px;
+    opacity: .1;
 }
 
 .heroImage {
