@@ -1,5 +1,5 @@
 .hero {
-    border: 1px solid;
+    /* border: 1px solid; */
     padding: 20px;
 }
 
@@ -18,6 +18,28 @@
     margin: 0 auto;
 }
 
+.controlSection button {
+    display: inline-block;
+}
+
+.controlSection {
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.controlButton a {
+    color: white;
+}
+
+.controlDropdown {
+    display: inline-block;
+}
+
+.controlSection button {
+    margin-left: 10px;
+}
+
 @media(max-width: 768px) {
     .heroImage {
         display: block;
@@ -29,13 +51,16 @@
         width: 100%;
     }
 
-    .dropdown {
+    .controlSection div {
         width: 100%;
-        color: red;
-        border: 2px solid red;
     }
 
-    .dropdown a {
+    .controlSection button {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+
+    .controlSection a {
         border-bottom: 1px solid green;
         padding: 20px;
     }

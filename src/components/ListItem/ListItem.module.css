@@ -9,6 +9,12 @@
 
 .fullWidth {
     width: 100%;
+    color: black;
+}
+
+.fullWidth:hover {
+    text-decoration: none;
+    color: black;
 }
 
 .center {
@@ -20,6 +26,11 @@
     bottom: 0;
     left: 50%;
     right: 50%;
+}
+
+.listItem:hover {
+    background: #e9eaea;
+    text-decoration: none;
 }
 
 .lineBorderStyleNorthEastCorridor {
@@ -61,3 +72,8 @@
 .lineBorderAtlanticCity {
     border-left: 5px solid #015dab;
 }
+
+.lineBorderStyleAmtrak {
+    border-left: 5px solid #45647b;
+}
+

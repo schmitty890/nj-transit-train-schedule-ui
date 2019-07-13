@@ -35,6 +35,14 @@ class ListItem extends Component {
             case 'Montclair-Boonton':
                 lineBorderStyle = styles.lineBorderStyleMontclairBoonton;
                 break;
+            case 'REGIONAL':
+            case 'CRESCENT':
+            case 'ACELA EXPRESS':
+            case 'SILVER METEOR-R':
+            case 'KEYSTONE':        
+            case 'Amtrak':
+                lineBorderStyle = styles.lineBorderStyleAmtrak;
+                break;
         }
 
 
@@ -66,7 +74,7 @@ class ListItem extends Component {
 
         return (            
             <Card onClick={(event) => this.props.action(event, this.props)}>
-                <Card.Header className={lineBorderStyle}>
+                <Card.Header className={[lineBorderStyle, styles.listItem].join(' ')}>
                 <Accordion.Toggle as={Button} variant="link" className={styles.fullWidth} eventKey={this.props.keyid}>
                     <Container>
                         <Row>

@@ -24,17 +24,20 @@ const Hero = (props) => {
             <Row>
                 <Col sm={12} className={styles.hero}>
                     {/* <div className={styles.heroTitle}>{props.currentStation}</div> */}
-                    <div>Choose a station</div>
-                    <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            Choose a station
-                        </Dropdown.Toggle>
+                    {/* <div>Choose a station</div> */}
+                    <div className={styles.controlSection}>
+                        <Button variant="primary" className={styles.controlButton}><a href="https://www.njtransit.com/pdf/rail/Rail_System_Map.pdf" target="_blank">View transit map</a></Button>
+                        <Dropdown className={styles.controlDropdown}>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                Choose a station
+                            </Dropdown.Toggle>
 
-                        <Dropdown.Menu className={styles.dropdown}>
-                            <Dropdown.Item onClick={(event) => props.action(event, 'hamilton')}>Hamilton</Dropdown.Item>
-                            <Dropdown.Item onClick={(event) => props.action(event, 'nyp')}>New York Penn</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                            <Dropdown.Menu className={styles.dropdown}>
+                                <Dropdown.Item onClick={(event) => props.action(event, 'hamilton')}>Hamilton</Dropdown.Item>
+                                <Dropdown.Item onClick={(event) => props.action(event, 'nyp')}>New York Penn</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
                 </Col>
             </Row>
         </Container>
