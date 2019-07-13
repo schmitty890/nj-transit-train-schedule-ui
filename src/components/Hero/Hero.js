@@ -8,8 +8,6 @@ const Hero = (props) => {
     // console.log(props);
     return (
         <Container>
-            <CurrentWeather
-                currentWeather={props.currentWeather} />
             <Row>
                 <Col sm={4} className={styles.hero}>
                     <img className={styles.heroImage} src={logo} />
@@ -22,6 +20,8 @@ const Hero = (props) => {
                     <div>Current temp: 70</div>
                 </Col>
                 <Col sm={4} className={styles.hero}>
+                    <CurrentWeather
+                        currentWeather={props.currentWeather} />
                     {/* <div className={styles.heroTitle}>{props.currentStation}</div> */}
                 </Col>
             </Row>

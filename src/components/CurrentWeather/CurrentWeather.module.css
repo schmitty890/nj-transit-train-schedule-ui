@@ -1,18 +1,42 @@
 .weatherContainer {
     /* border: 1px solid red; */
-    text-align: center;
+    /* text-align: center; */
+    min-height: 50px;
 }
 
-.paddingTop10 {
-    padding-top: 10px;
+.description {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    font-size: 36px;
+    text-transform: uppercase;
+    line-height: 30px;
+    opacity: .3;
 }
 
-.weatherContainer div {
-    /* border: 1px solid; */
-    /* padding: 20px; */
-}
 
 .icon {
-    font-size: 36px;
+    font-size: 100px;
     padding-top: 0px;
+    position: absolute;
+    top: -20px;
+    right: 0px;
+    opacity: .1;
+}
+
+.temp {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 48px;
+}
+
+
+@media(max-width: 768px) {
+    .temp {
+        font-size: 36px;
+    }
+    .description {
+        font-size: 18px;
+    }
 }
