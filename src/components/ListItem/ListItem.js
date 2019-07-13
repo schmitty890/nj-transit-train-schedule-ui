@@ -4,6 +4,7 @@ import styles from "./ListItem.module.css";
 import ListItemDetails from '../ListItemDetails/ListItemDetails';
 import FaTrain from 'react-icons/lib/fa/train';
 import FaClockO from 'react-icons/lib/fa/clock-o';
+import railMap from '../../images/Rail_System_Map.svg';
 
 class ListItem extends Component {
 
@@ -32,8 +33,23 @@ class ListItem extends Component {
             case 'No Jersey Coast':
                 lineBorderStyle = styles.lineBorderStyleNorthJerseyCoast;
                 break;
+            case 'Atl. City Line':
+                lineBorderStyle = styles.lineBorderAtlanticCity;
+                break;
             case 'Montclair-Boonton':
                 lineBorderStyle = styles.lineBorderStyleMontclairBoonton;
+                break;
+            case 'Main Line':
+                lineBorderStyle = styles.lineBorderStyleMain;
+                break;
+            case 'Raritan Valley':
+                lineBorderStyle = styles.lineBorderStyleRaritanValley;
+                break;
+            case 'Pascack Valley':
+                lineBorderStyle = styles.lineBorderPascackValley;
+                break;
+            case 'Bergen Co. Line ':
+                lineBorderStyle = styles.lineBorderBergenCounty;
                 break;
             case 'REGIONAL':
             case 'CRESCENT':
@@ -43,6 +59,8 @@ class ListItem extends Component {
             case 'Amtrak':
                 lineBorderStyle = styles.lineBorderStyleAmtrak;
                 break;
+            default:
+                lineBorderStyle = styles.lineBorderDefault;
         }
 
 
@@ -93,6 +111,9 @@ class ListItem extends Component {
                 <Accordion.Collapse eventKey={this.props.keyid}>
                 <Card.Body>
                     {trainStopList}
+                    <div id="railMap">
+                        <img className={styles.railMap} src={railMap} alt="rail map"></img>
+                    </div>
                 </Card.Body>
                 </Accordion.Collapse>
             </Card>

@@ -77,3 +77,10 @@
     border-left: 5px solid #45647b;
 }
 
+.lineBorderDefault {
+    border-left: 5px solid black;
+}
+
+.railMap {
+    width: 100%;
+}

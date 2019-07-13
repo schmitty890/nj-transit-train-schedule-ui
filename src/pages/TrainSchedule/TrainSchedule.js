@@ -141,7 +141,7 @@ class TrainSchedule extends Component {
     }
 
     getCurrentWeather(zip) {
-        // console.log('zip');
+        console.log(zip);
         const url = `${baseURL}/api/weather-current/${zip}`;
         // console.log(url);
         axios.get(url)
