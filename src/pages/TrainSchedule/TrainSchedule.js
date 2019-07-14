@@ -229,7 +229,8 @@ class TrainSchedule extends Component {
                     action={this.postCurrentTrains}
                     search={this.searchTrainStopDetails}
                     currentStation={this.state.currentStation}
-                    currentWeather={this.state.currentWeather} />
+                    currentWeather={this.state.currentWeather}
+                    searchedTrains={this.state.searchedTrains} />
                 <Accordion>
                     {trainList}
                 </Accordion>
