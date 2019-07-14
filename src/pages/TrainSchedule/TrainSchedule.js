@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Hero from '../../components/Hero/Hero';
 import ListItem from '../../components/ListItem/ListItem';
+import SearchedTrainDetails from '../../components/SearchedTrainDetails/SearchedTrainDetails';
+import WeatherForecastDetails from '../../components/WeatherForecastDetails/WeatherForecastDetails';
 import axios from "axios";
-import { Container, Row, Spinner, Accordion } from 'react-bootstrap';
+import { Container, Row, Spinner, Accordion, Card } from 'react-bootstrap';
 
 // define base url for http requests
 let baseURL = (window.location.hostname === 'localhost') ? 'http://localhost:3001' : 'https://nj-transit-train-schedule-api.herokuapp.com';
@@ -100,7 +102,7 @@ class TrainSchedule extends Component {
 
     searchTrainStopDetails = (event, trainNumber) => {
         event.preventDefault();
-        console.log(trainNumber);
+        // console.log(trainNumber);
         const url = `${baseURL}/api/search-train`;
         // console.log(url);
 
@@ -108,9 +110,7 @@ class TrainSchedule extends Component {
             trainNumber
           })
           .then(response => {
-            console.log('the response');
-            console.log(response.data.trainDetails);
-            // set the state
+            // console.log(response.data.trainDetails);
             this.setState({
                 searchedTrainDetails: response.data.trainDetails
             });
@@ -237,6 +237,10 @@ class TrainSchedule extends Component {
                     currentStation={this.state.currentStation}
                     currentWeather={this.state.currentWeather}
                     searchedTrains={this.state.searchedTrains} />
+                <WeatherForecastDetails
+                    weatherForecast={this.state.forecastWeather} />
+                <SearchedTrainDetails 
+                    searchedTrainDetails={this.state.searchedTrainDetails}/>
                 <Accordion>
                     {trainList}
                 </Accordion>
