@@ -29,6 +29,7 @@ class TrainSchedule extends Component {
         ],
         trains: [],
         trainStopDetails: [],
+        searchedTrains: [],
         loadingTrainStopDetails: false
     }
 
@@ -119,9 +120,9 @@ class TrainSchedule extends Component {
         axios.get(url)
             .then(resp => {
                 console.log(resp.data);
-                // this.setState({
-                //     trains: resp.data
-                // });
+                this.setState({
+                    searchedTrains: resp.data
+                });
             })
             .catch(err => console.log(err));
     }
