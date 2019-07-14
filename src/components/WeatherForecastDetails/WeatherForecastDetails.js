@@ -8,10 +8,9 @@ class WeatherForecastDetails extends React.Component {
         console.log(this.props.weatherForecast);
         var settings = {
             dots: false,
-            infinite: true,
-            autoplay: true,
+            infinite: false,
+            arrows: false,
             speed: 500,
-            autoplaySpeed: 5000,
             slidesToShow: 5,
             slidesToScroll: 1,
             responsive: [
@@ -33,12 +32,14 @@ class WeatherForecastDetails extends React.Component {
             ]
         };
         let forecast = null;
-
         forecast = this.props.weatherForecast.map((weather, index) => {
-            console.log(weather);
-            return <WeatherCarouselSlide
-                key={index}
-                weatherForecast={weather} />
+            console.log(index + ' ' + weather);
+            if(index < 10) {
+                return <WeatherCarouselSlide
+                    key={index}
+                    weatherForecast={weather} />
+            }
+
         });
 
         return (
