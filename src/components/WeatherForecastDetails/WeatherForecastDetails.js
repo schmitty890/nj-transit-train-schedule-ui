@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-// import styles from "./SearchedTrainsCarousel.module.css";
+import styles from "./WeatherForecastDetails.module.css";
 import WeatherCarouselSlide from '../WeatherCarouselSlide/WeatherCarouselSlide';
 
 class WeatherForecastDetails extends React.Component {
@@ -37,15 +37,19 @@ class WeatherForecastDetails extends React.Component {
             if(index < 10) {
                 return <WeatherCarouselSlide
                     key={index}
-                    weatherForecast={weather} />
+                    weatherForecast={weather}
+                    city={this.props.currentCity} />
             }
 
         });
 
         return (
-            <Slider {...settings}>
-                {forecast}
-            </Slider>
+            <div>
+                <div className={styles.title}>Weather forecast for {this.props.currentCity}</div>
+                <Slider {...settings}>
+                    {forecast}
+                </Slider>
+            </div>
         );
     }
 }

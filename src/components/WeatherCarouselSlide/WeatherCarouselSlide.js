@@ -9,7 +9,7 @@ const WeatherCarouselSlide = (props) => {
     const icon = weatherIconAPI.getIcon(props.weatherForecast.weather[0].icon);
     return (
         <div keyid={props.key} className={styles.weatherWrapper}>
-            <div><Moment fromNow>{props.weatherForecast.dt_txt}</Moment></div>
+            <div>{props.city} weather <Moment fromNow>{props.weatherForecast.dt_txt}</Moment></div>
             <div>{props.weatherForecast.main.temp}</div>
             <div>{icon}</div>
             <div>{props.weatherForecast.weather[0].description}</div>

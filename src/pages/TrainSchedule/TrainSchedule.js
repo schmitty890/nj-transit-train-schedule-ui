@@ -238,7 +238,8 @@ class TrainSchedule extends Component {
                     currentWeather={this.state.currentWeather}
                     searchedTrains={this.state.searchedTrains} />
                 <WeatherForecastDetails
-                    weatherForecast={this.state.forecastWeather} />
+                    weatherForecast={this.state.forecastWeather}
+                    currentCity={this.state.currentStation} />
                 <SearchedTrainDetails 
                     searchedTrainDetails={this.state.searchedTrainDetails}/>
                 <Accordion>
