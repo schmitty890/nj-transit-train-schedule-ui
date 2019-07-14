@@ -95,6 +95,11 @@ class TrainSchedule extends Component {
           });
     }
 
+    searchTrainStopDetails = (event, train) => {
+        event.preventDefault();
+        console.log(train);
+    }
+
     getCurrentTrains() {
         const url = `${baseURL}/api/train`;
         // console.log(url);
@@ -195,6 +200,7 @@ class TrainSchedule extends Component {
             <Container>
                 <Hero 
                     action={this.postCurrentTrains}
+                    search={this.searchTrainStopDetails}
                     currentStation={this.state.currentStation}
                     currentWeather={this.state.currentWeather} />
                 <Accordion>

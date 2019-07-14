@@ -1,11 +1,12 @@
 import React from 'react';
-import { Row, Col, Container, Button, Accordion, Card, Dropdown } from 'react-bootstrap';
+import { Row, Col, Container, Button, Accordion, Card, Dropdown, Form } from 'react-bootstrap';
 import styles from "./Hero.module.css";
 import CurrentWeather from '../CurrentWeather/CurrentWeather';
 import logo from '../../images/logo.png';
 
 const Hero = (props) => {
     console.log(props);
+    let searchedTrain;
     return (
         <Container>
             <Row>
@@ -21,8 +22,8 @@ const Hero = (props) => {
                         currentWeather={props.currentWeather} />
                 </Col>
             </Row>
-            <Row>
-                <Col sm={12} className={styles.hero}>
+            <Row className={styles.controlSectionRow}>
+                <Col sm={6} className={styles.controlSectionRowColumn}>
                     {/* <div className={styles.heroTitle}>{props.currentStation}</div> */}
                     {/* <div>Choose a station</div> */}
                     <div className={styles.controlSection}>
@@ -203,7 +204,27 @@ const Hero = (props) => {
                         </Dropdown>
                     </div>
                 </Col>
+                <Col sm={6} className={styles.controlSectionRowColumn}>
+                    <div className={styles.controlSection}>
+                    <Form>
+                        <Col lg={6} sm={12} className={styles.controlSectionSearch}>
+                            <Form.Group controlId="formTrainNumber">
+                                <Form.Control ref={node => searchedTrain = node} type="text" maxLength="4" placeholder="Search by train number" />
+                            </Form.Group>
+                        </Col>
+                        <Col lg={6} sm={12} className={styles.controlSectionSearch}>
+                            <Button variant="primary" type="submit" onClick={(event) => props.search(event, searchedTrain.value)}>
+                                Search
+                            </Button>
+                        </Col>
+                    </Form>
+                    </div>
+                    {/* <div>
+                        Recently searched trains slick.js will go here...
+                    </div> */}
+                </Col>
             </Row>
+
         </Container>
     )
 }
