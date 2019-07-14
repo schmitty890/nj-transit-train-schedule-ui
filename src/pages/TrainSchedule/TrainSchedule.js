@@ -30,6 +30,7 @@ class TrainSchedule extends Component {
         trains: [],
         trainStopDetails: [],
         searchedTrains: [],
+        searchedTrainDetails: [],
         loadingTrainStopDetails: false
     }
 
@@ -76,7 +77,7 @@ class TrainSchedule extends Component {
         event.preventDefault();
         this.setState({loadingTrainStopDetails: true});
         // console.log('getTrainStopDetails');
-        // console.log(train);
+        console.log(train);
         // const url = `https://dv.njtransit.com/webdisplay/train_stops.aspx?train=${train.trainNumber}`;
 
         const url = `${baseURL}/api/train-details`;
@@ -99,7 +100,7 @@ class TrainSchedule extends Component {
 
     searchTrainStopDetails = (event, trainNumber) => {
         event.preventDefault();
-        // console.log(trainNumber);
+        console.log(trainNumber);
         const url = `${baseURL}/api/search-train`;
         // console.log(url);
 
@@ -107,7 +108,12 @@ class TrainSchedule extends Component {
             trainNumber
           })
           .then(response => {
+            console.log('the response');
             console.log(response.data.trainDetails);
+            // set the state
+            this.setState({
+                searchedTrainDetails: response.data.trainDetails
+            });
           })
           .catch(error => {
             console.log(error);
