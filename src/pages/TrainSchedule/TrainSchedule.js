@@ -35,6 +35,7 @@ class TrainSchedule extends Component {
     componentDidMount() {
         this.getCurrentTrains();
         this.getCurrentStation();
+        this.getSearchedTrains();
     }
 
     postCurrentTrains = (event, train) => {
@@ -95,9 +96,34 @@ class TrainSchedule extends Component {
           });
     }
 
-    searchTrainStopDetails = (event, train) => {
+    searchTrainStopDetails = (event, trainNumber) => {
         event.preventDefault();
-        console.log(train);
+        // console.log(trainNumber);
+        const url = `${baseURL}/api/search-train`;
+        // console.log(url);
+
+        axios.post(url, {
+            trainNumber
+          })
+          .then(response => {
+            console.log(response.data.trainDetails);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    }
+
+    getSearchedTrains() {
+        const url = `${baseURL}/api/search-train`;
+        // console.log(url);
+        axios.get(url)
+            .then(resp => {
+                console.log(resp.data);
+                // this.setState({
+                //     trains: resp.data
+                // });
+            })
+            .catch(err => console.log(err));
     }
 
     getCurrentTrains() {
