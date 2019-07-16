@@ -111,9 +111,9 @@ class ListItem extends Component {
                 <Accordion.Collapse eventKey={this.props.keyid}>
                 <Card.Body>
                     {trainStopList}
-                    <div id="railMap">
+                    {/* <div id="railMap">
                         <img className={styles.railMap} src={railMap} alt="rail map"></img>
-                    </div>
+                    </div> */}
                 </Card.Body>
                 </Accordion.Collapse>
             </Card>
